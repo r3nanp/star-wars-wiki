@@ -9,3 +9,10 @@
 *:after {
   box-sizing: inherit;
 }
+
+a {
+  color: inherit;
+}
+li {
+  list-style-type: none;
+}

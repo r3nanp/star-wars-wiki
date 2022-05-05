@@ -1,47 +1,45 @@
-import type { GetStaticProps, NextPage } from 'next'
+import type { NextPage } from 'next'
 
-import { api } from '@/services/api'
-import { SEO } from '@/components/SEO'
-import { Card } from '../components/Card'
-import { Header } from '@/components/Header'
-import { Character } from '@/types/Character'
-import { urlToIdAndType } from '@/utils/urlToTypeAndId'
-import { useAsyncEffect } from '@/hooks/useAsyncEffect'
-import { fetchCharacterList } from '@/api/fetcher'
+import { Button, Card } from '@/components'
+import { useCharactersInfiniteQuery } from '@/hooks/useSWRInfiniteQuery'
 
-type HomeProps = {
-  characters: Character[]
-}
+export const Home: NextPage = () => {
+  const { isLoading, fetchMore, canFetchMore, data, isFetchingMore } =
+    useCharactersInfiniteQuery()
 
-export const Home: NextPage<HomeProps> = ({ characters }) => {
-  return (
-    <main>
-      <Header />
+  return isLoading ? (
+    <>
+      <h1 className="text-xl">Loading...</h1>
+    </>
+  ) : (
+    <section className="w-full py-2">
+      <div className="h-screen pt-8 rounded-lg align-center">
+        <h1 className="text-2xl mb-4 font-bold border-b-2 border-black">
+          Characters
+        </h1>
 
-      <section className="flex flex-col align-center justify-center">
-        <div className="grid place-items-center grid-rows-1 gap-2 px-4 md:grid-cols-2 md:grid-rows-1">
-          {characters.map(character => (
-            <Card
-              path={`/${character.id}`}
-              key={character.id}
-              name={character.name}
-              description="haha"
-            />
-          ))}
-        </div>
-      </section>
-    </main>
+        {data?.map(character => (
+          <Card
+            path={`/characters/${character.id}`}
+            key={character.name}
+            name={character.name}
+          />
+        ))}
+
+        <Button
+          onClick={fetchMore}
+          disabled={!canFetchMore || !!isFetchingMore}
+          content={
+            isFetchingMore
+              ? 'Carregando mais...'
+              : canFetchMore
+              ? 'Carregue mais!'
+              : 'Acabou :('
+          }
+        />
+      </div>
+    </section>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetchCharacterList()
-
-  return {
-    props: {
-      characters: data,
-    },
-  }
 }
 
 export default Home

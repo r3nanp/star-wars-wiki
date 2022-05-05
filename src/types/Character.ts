@@ -1,6 +1,6 @@
-export type Character = {
+import { Resource } from './Resource'
+
+export type Character = Resource & {
   name: string
-  id: string
-  type: string
-  url: string
+  homeworld: string
 }
