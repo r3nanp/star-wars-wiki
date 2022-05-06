@@ -31,9 +31,9 @@ export const Home: NextPage = () => {
           disabled={!canFetchMore || !!isFetchingMore}
           content={
             isFetchingMore
-              ? 'Carregando mais...'
+              ? 'Carregando mais personagens...'
               : canFetchMore
-              ? 'Carregue mais!'
+              ? 'Carregue mais personagens!'
               : 'Acabou :('
           }
         />
