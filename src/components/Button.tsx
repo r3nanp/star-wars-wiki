@@ -1,16 +1,55 @@
-import { ButtonHTMLAttributes } from 'react'
+import clsx from 'clsx'
+import * as React from 'react'
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  content: string
+import { Spinner } from './Spinner'
+
+const variants = {
+  primary: 'bg-blue-600 text-white hover:bg-gray-50:text-blue-600',
+  inverse: 'bg-white text-blue-600 hover:bg-blue-600:text-white',
+  danger: 'bg-red-600 text-white hover:bg-red-50:text-red-600',
 }
 
-export const Button = ({ content, ...rest }: ButtonProps) => {
+const sizes = {
+  sm: 'py-2 px-4 text-sm',
+  md: 'py-2 px-6 text-md',
+  lg: 'py-3 px-8 text-lg',
+}
+
+type IconProps =
+  | { startIcon: React.ReactElement; endIcon?: never }
+  | { endIcon: React.ReactElement; startIcon?: never }
+  | { endIcon?: undefined; startIcon?: undefined }
+
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: keyof typeof variants
+  size?: keyof typeof sizes
+  isLoading?: boolean
+} & IconProps
+
+export const Button = ({
+  type = 'button',
+  className = '',
+  variant = 'primary',
+  size = 'md',
+  isLoading = false,
+  startIcon,
+  endIcon,
+  ...props
+}: ButtonProps) => {
   return (
     <button
-      {...rest}
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 my-2 px-4 rounded"
+      type={type}
+      className={clsx(
+        'flex justify-center items-center border border-gray-300 disabled:opacity-70 disabled:cursor-not-allowed rounded-md shadow-sm font-medium focus:outline-none',
+        variants[variant],
+        sizes[size],
+        className
+      )}
+      {...props}
     >
-      <p>{content}</p>
+      {isLoading && <Spinner size="sm" className="text-current" />}
+      {!isLoading && startIcon}
+      <span className="mx-2">{props.children}</span> {!isLoading && endIcon}
     </button>
   )
 }

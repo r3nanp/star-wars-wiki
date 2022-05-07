@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 
 import { Button, Card } from '@/components'
-import { useCharactersInfiniteQuery } from '@/hooks/useSWRInfiniteQuery'
+import { useCharactersInfiniteQuery } from '@/hooks'
 
 export const Home: NextPage = () => {
-  const { isLoading, fetchMore, canFetchMore, data, isFetchingMore } =
+  const { data, fetchMore, isLoading, canFetchMore, isFetchingMore } =
     useCharactersInfiniteQuery()
 
   return isLoading ? (
@@ -13,30 +13,32 @@ export const Home: NextPage = () => {
     </>
   ) : (
     <section className="w-full py-2">
-      <div className="h-screen pt-8 rounded-lg align-center">
+      <div className="h-screen pt-8">
         <h1 className="text-2xl mb-4 font-bold border-b-2 border-black">
           Characters
         </h1>
 
         {data?.map(character => (
           <Card
-            path={`/characters/${character.id}`}
-            key={character.name}
+            key={character.id}
             name={character.name}
+            path={`/characters/${character.id}`}
           />
         ))}
 
-        <Button
-          onClick={fetchMore}
-          disabled={!canFetchMore || !!isFetchingMore}
-          content={
-            isFetchingMore
-              ? 'Carregando mais personagens...'
+        <div className="flex justify-center pb-4 items-center">
+          <Button
+            onClick={fetchMore}
+            disabled={!canFetchMore || !!isFetchingMore}
+            isLoading={!!isFetchingMore}
+          >
+            {isFetchingMore
+              ? 'Loading more...'
               : canFetchMore
-              ? 'Carregue mais personagens!'
-              : 'Acabou :('
-          }
-        />
+              ? 'Load more, please!'
+              : 'My job is done'}
+          </Button>
+        </div>
       </div>
     </section>
   )

@@ -1,39 +1,47 @@
-import { useState } from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import { api } from '@/services/api'
-import { useAsyncEffect } from '@/hooks/useAsyncEffect'
+//* CUSTOM IMPORTS
 import { Character } from '@/types/Character'
 import { useResource } from '@/hooks/useResource'
+import { Heading, Spinner } from '@/components'
+import { useResourceById } from '@/hooks/useResourceById'
 
 const Character: NextPage = () => {
-  const [character, setCharacter] = useState<Character>()
+  const {
+    query: { id },
+    isFallback,
+  } = useRouter()
 
-  const { query } = useRouter()
-  const { data: planet } = useResource(character?.homeworld || '')
-
-  const { id } = query
-
-  useAsyncEffect(async () => {
-    if (id) {
-      const { data } = await api.get(`/people/${id}`)
-
-      console.log(data)
-
-      setCharacter(data)
+  const { isLoading, data: character } = useResourceById<Character>(
+    id as string,
+    'people',
+    {
+      enabled: !isFallback && !!id && Number.isInteger(Number(id)),
     }
-  }, [id])
+  )
 
-  if (!character || !planet) return <h1>Loading...</h1>
+  const { data: planet, isLoading: isPlanetLoading } = useResource(
+    character?.homeworld || ''
+  )
+
+  if (!id) {
+    return null
+  }
+
+  if (isLoading) return <Spinner size="lg" className="m-auto" />
 
   return (
     <main>
-      <h1 className="text-2xl font-bold">Este é {character.name}</h1>
-      <Link href={`/planets/${planet.id}`}>
-        <a>Do planeta {planet.name}</a>
-      </Link>
+      <Heading>Este é {character?.name}</Heading>
+      {isPlanetLoading ? (
+        <Spinner size="sm" className="m-auto" />
+      ) : (
+        <Link href={`/planets/${planet?.id}`}>
+          <a>Do planeta {planet?.name}</a>
+        </Link>
+      )}
     </main>
   )
 }

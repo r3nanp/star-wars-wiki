@@ -51,14 +51,10 @@ export const fetchCharacterList = async (url = '/people') => {
   return data
 }
 
-export const fetchPlanets = async () => {
-  const { data: worlds } = await api.get(`/planets`)
-}
-
 export const fetchProxyResourceById: ResourceFetcherById = async <T>(
   id: string,
   type: string
 ) => {
-  const url = `/api/${type}/${id}`
+  const url = `/${type}/${id}`
   return fetchResource<T>(url)
 }
