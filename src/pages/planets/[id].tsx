@@ -32,7 +32,7 @@ export const Planet: NextPage = () => {
   return (
     <main>
       {isSuccess && (
-        <>
+        <div className="flex flex-col justify-center items-center">
           <Heading className="my-4">Characteristics:</Heading>
 
           <ListContainer>
@@ -46,13 +46,17 @@ export const Planet: NextPage = () => {
               {planetResource?.terrain}
             </ListItem>
 
-            {planetResource?.residents.map(url => (
-              <CharacterName key={url} url={url} />
-            ))}
+            <ListItem>
+              <span className="font-bold text-lg">Residents:</span>
+
+              {planetResource?.residents.map(url => (
+                <CharacterName key={url} url={url} />
+              ))}
+            </ListItem>
           </ListContainer>
 
-          <Button onClick={() => push('/')}>Go back</Button>
-        </>
+          <Button className="mt-4" onClick={() => push('/')}>Go back</Button>
+        </div>
       )}
     </main>
   )

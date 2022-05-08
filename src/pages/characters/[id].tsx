@@ -39,7 +39,10 @@ const Character: NextPage = () => {
         <Spinner size="sm" className="m-auto" />
       ) : (
         <Link href={`/planets/${planet?.id}`}>
-          <a>Do planeta {planet?.name}</a>
+          <a className="text-white">
+            Do planeta{' '}
+            <span className="underline text-primary">{planet?.name}</span>
+          </a>
         </Link>
       )}
     </main>

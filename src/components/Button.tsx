@@ -4,9 +4,7 @@ import * as React from 'react'
 import { Spinner } from './Spinner'
 
 const variants = {
-  primary: 'bg-blue-600 text-white hover:bg-gray-50:text-blue-600',
-  inverse: 'bg-white text-blue-600 hover:bg-blue-600:text-white',
-  danger: 'bg-red-600 text-white hover:bg-red-50:text-red-600',
+  primary: 'bg-primary text-black hover:text-gray-50:bg-yellow-700',
 }
 
 const sizes = {
@@ -40,7 +38,7 @@ export const Button = ({
     <button
       type={type}
       className={clsx(
-        'flex justify-center items-center border border-gray-300 disabled:opacity-70 disabled:cursor-not-allowed rounded-md shadow-sm font-medium focus:outline-none',
+        'flex justify-center items-center border border-yellow-100 disabled:opacity-70 disabled:cursor-not-allowed rounded-md shadow-sm font-medium focus:outline-none',
         variants[variant],
         sizes[size],
         className

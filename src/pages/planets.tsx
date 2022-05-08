@@ -1,4 +1,4 @@
-import { Button, Card } from '@/components'
+import { Button, Card, Heading } from '@/components'
 import { usePlanetsInfiniteQuery } from '@/hooks/useSWRInfiniteQuery'
 
 export default function Homeworld() {
@@ -10,9 +10,9 @@ export default function Homeworld() {
   ) : (
     <section className="w-full py-2">
       <div className="h-screen pt-8">
-        <h1 className="text-2xl mb-4 font-bold border-b-2 border-black">
+        <Heading className="mb-4 border-b-2 border-primary text-primary">
           Planets
-        </h1>
+        </Heading>
 
         {data?.map(planets => (
           <Card

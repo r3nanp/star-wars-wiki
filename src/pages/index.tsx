@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 
-import { Button, Card } from '@/components'
+import { Button, Card, Heading } from '@/components'
 import { useCharactersInfiniteQuery } from '@/hooks'
 
 export const Home: NextPage = () => {
@@ -14,9 +14,9 @@ export const Home: NextPage = () => {
   ) : (
     <section className="w-full py-2">
       <div className="h-screen pt-8">
-        <h1 className="text-2xl mb-4 font-bold border-b-2 border-black">
+        <Heading className="mb-4 border-b-2 border-primary text-primary">
           Characters
-        </h1>
+        </Heading>
 
         {data?.map(character => (
           <Card
