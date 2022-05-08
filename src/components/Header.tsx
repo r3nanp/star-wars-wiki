@@ -7,7 +7,7 @@ import { ActiveLink } from './ActiveLink'
 
 export const Header = () => {
   return (
-    <header className="flex flex-col items-center w-full h-20  md:justify-between md:items-center">
+    <header className="flex flex-col items-center h-20">
       <Link href="/">
         <Image
           width={500}
@@ -18,7 +18,7 @@ export const Header = () => {
         />
       </Link>
 
-      <Menu as="nav" className="relative flex items-center text-left">
+      <Menu as="nav" className="relative flex items-center text-left z-10">
         {({ open }) => (
           <>
             <div>
@@ -44,7 +44,7 @@ export const Header = () => {
               leaveTo="transform opacity-0 scale-95"
               show={open}
             >
-              <Menu.Items className="absolute left-2 top-5 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute left-2 top-5 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-black shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="p-2">
                   <Menu.Item>
                     <ActiveLink href="/" shouldMatchExactHref passHref>
@@ -57,19 +57,11 @@ export const Header = () => {
 
                 <div className="p-2">
                   <Menu.Item>
-                    {({ active }) => (
-                      <ActiveLink href="/planets" passHref>
-                        <a
-                          className={`${
-                            active
-                              ? 'bg-violet-500 text-white'
-                              : 'text-gray-900'
-                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                        >
-                          Planets
-                        </a>
-                      </ActiveLink>
-                    )}
+                    <ActiveLink href="/planets" shouldMatchExactHref passHref>
+                      <a className="group flex w-full items-center rounded-md px-2 py-2 text-sm">
+                        Planets
+                      </a>
+                    </ActiveLink>
                   </Menu.Item>
                 </div>
               </Menu.Items>

@@ -30,7 +30,7 @@ export const ActiveLink = ({
   return (
     <Link {...rest}>
       {cloneElement(children, {
-        className: isActive ? 'text-blue-400' : 'text-black'
+        className: isActive ? 'text-primary' : 'text-white'
       })}
     </Link>
   )

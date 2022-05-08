@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 
-import { Button, Card, Heading } from '@/components'
+import { Button, Card, Heading, Spinner } from '@/components'
 import { useCharactersInfiniteQuery } from '@/hooks'
 
 export const Home: NextPage = () => {
@@ -8,9 +8,9 @@ export const Home: NextPage = () => {
     useCharactersInfiniteQuery()
 
   return isLoading ? (
-    <>
-      <h1 className="text-xl">Loading...</h1>
-    </>
+    <div className="container-center my-2">
+      <Spinner />
+    </div>
   ) : (
     <section className="w-full py-2">
       <div className="h-screen pt-8">

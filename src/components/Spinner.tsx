@@ -8,7 +8,9 @@ const sizes = {
 }
 
 const colors = {
-  primary: 'text-blue-600',
+  primary: 'text-primary',
+  white: 'text-white',
+  gray: 'text-gray-500'
 }
 
 export type SpinnerProps = {

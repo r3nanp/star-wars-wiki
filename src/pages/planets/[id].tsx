@@ -49,13 +49,19 @@ export const Planet: NextPage = () => {
             <ListItem>
               <span className="font-bold text-lg">Residents:</span>
 
-              {planetResource?.residents.map(url => (
-                <CharacterName key={url} url={url} />
-              ))}
+              {planetResource?.residents ? (
+                planetResource?.residents.map(url => (
+                  <CharacterName key={url} url={url} />
+                ))
+              ) : (
+                <Spinner color="white" className="text-center m-auto" />
+              )}
             </ListItem>
           </ListContainer>
 
-          <Button className="mt-4" onClick={() => push('/')}>Go back</Button>
+          <Button className="mt-4" onClick={() => push('/')}>
+            Go back
+          </Button>
         </div>
       )}
     </main>

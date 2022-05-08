@@ -14,6 +14,7 @@ const Character: NextPage = () => {
     isFallback,
   } = useRouter()
 
+  // Get character data
   const { isLoading, data: character } = useResourceById<Character>(
     id as string,
     'people',
@@ -22,13 +23,12 @@ const Character: NextPage = () => {
     }
   )
 
+  // Get the character homeworld
   const { data: planet, isLoading: isPlanetLoading } = useResource(
     character?.homeworld || ''
   )
 
-  if (!id) {
-    return null
-  }
+  if (!id) return null
 
   if (isLoading) return <Spinner size="lg" className="m-auto" />
 
