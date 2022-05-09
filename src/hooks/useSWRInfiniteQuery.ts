@@ -1,8 +1,9 @@
-import { fetchCharacterList, fetchPlanetsList } from '@/api/fetcher'
+import useSWRInfinite from 'swr/infinite'
+
+import { fetchCharacterList, fetchPlanetsList } from '@/api'
 import { Character } from '@/types/Character'
 import { Planets } from '@/types/Planets'
-import { urlToIdAndType } from '@/utils/urlToTypeAndId'
-import useSWRInfinite from 'swr/infinite'
+import { urlToIdAndType } from '@/utils'
 
 interface BaseQueryHookResult<T> {
   data?: T[]

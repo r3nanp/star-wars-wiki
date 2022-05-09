@@ -3,9 +3,18 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 //* CUSTOM IMPORTS
-import { Character } from '@/types/Character'
+import {
+  Button,
+  Container,
+  Heading,
+  ListContainer,
+  ListItem,
+  Loading,
+} from '@/components'
 import { useResourceById, useResource } from '@/hooks'
-import { Button, Heading, ListContainer, ListItem, Spinner } from '@/components'
+import { Character } from '@/types/Character'
+import { motion } from 'framer-motion'
+import { opacity } from '@/styles/variants'
 
 const Character: NextPage = () => {
   const {
@@ -30,38 +39,45 @@ const Character: NextPage = () => {
 
   if (!id) return null
 
-  if (isLoading || isPlanetLoading)
-    return <Spinner size="lg" className="m-auto" />
+  if (isLoading || isPlanetLoading) return <Loading />
 
   return (
-    <main>
-      <div className="flex flex-col justify-center items-center">
-        <Heading className="my-4">This is {character?.name}</Heading>
+    <Container>
+      <motion.div
+        animate="exit"
+        initial="initial"
+        variants={opacity}
+        transition={{ duration: 1 }}
+        className="flex flex-col justify-center items-center"
+      >
+        <Heading color="white" className="my-4">
+          This is {character?.name}
+        </Heading>
 
         <ListContainer className="mb-2">
           <ListItem>
-            <Heading className="text-gray-800">Hair color:</Heading>
+            <Heading>Hair color:</Heading>
             {character?.hair_color}
           </ListItem>
         </ListContainer>
 
         <ListContainer className="mb-2">
           <ListItem>
-            <Heading className="text-gray-800">Gender:</Heading>
+            <Heading>Gender:</Heading>
             {character?.gender}
           </ListItem>
         </ListContainer>
 
         <ListContainer className="mb-2">
           <ListItem>
-            <Heading className="text-gray-800">Birth year:</Heading>
+            <Heading>Birth year:</Heading>
             {character?.birth_year}
           </ListItem>
         </ListContainer>
 
         <ListContainer className="mb-2">
           <ListItem>
-            <Heading className="text-gray-800">Homeworld:</Heading>
+            <Heading>Homeworld:</Heading>
             <Link href={`/planets/${planet?.id}`}>
               <a className="text-black">
                 <span className="underline">{planet?.name}</span>
@@ -73,8 +89,8 @@ const Character: NextPage = () => {
         <Button className="mt-4" onClick={() => push('/')}>
           Go home
         </Button>
-      </div>
-    </main>
+      </motion.div>
+    </Container>
   )
 }
 

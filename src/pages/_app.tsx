@@ -17,9 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="keywords" content="star wars, nerd, wiki" />
       </Head>
 
-      <Container>
-        <Component {...pageProps} />
-      </Container>
+      <Component {...pageProps} />
     </>
   )
 }

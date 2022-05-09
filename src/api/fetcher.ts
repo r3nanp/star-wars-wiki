@@ -1,7 +1,7 @@
 import { api } from '@/services/api'
 import { Character } from '@/types/Character'
 import { Planets } from '@/types/Planets'
-import { urlToIdAndType } from '@/utils/urlToTypeAndId'
+import { urlToIdAndType } from '@/utils'
 import { ResourceFetcher, ResourceFetcherById } from './types'
 
 export const fetchResourceById: ResourceFetcherById = async <T>(

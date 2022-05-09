@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import { Resource } from '@/types/Resource'
-import { fetchResource } from '@/api/fetcher'
-import { urlToIdAndType } from '@/utils/urlToTypeAndId'
+import { fetchResource } from '@/api'
+import { urlToIdAndType } from '@/utils'
 
 export const useResource = <T extends Resource>(url: string) => {
 

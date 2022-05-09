@@ -7,12 +7,16 @@ import { Planets } from '@/types/Planets'
 import {
   Button,
   CharacterName,
+  Container,
   Heading,
   ListContainer,
   ListItem,
+  Loading,
   Spinner,
 } from '@/components'
 import { formatPopulation } from '@/utils/formatPopulation'
+import { motion } from 'framer-motion'
+import { opacity } from '@/styles/variants'
 
 export const Planet: NextPage = () => {
   const {
@@ -33,13 +37,21 @@ export const Planet: NextPage = () => {
     return null
   }
 
-  if (isLoading) return <Spinner className="m-auto" size="lg" />
+  if (isLoading) return <Loading />
 
   return (
-    <main>
+    <Container>
       {isSuccess && (
-        <div className="flex flex-col justify-center items-center">
-          <Heading className="my-4">
+        <motion.div
+          initial="initial"
+          variants={opacity}
+          animate="exit"
+          transition={{
+            duration: 1,
+          }}
+          className="flex flex-col justify-center items-center"
+        >
+          <Heading color="white" className="my-4">
             {planetResource?.name} Characteristics:
           </Heading>
 
@@ -70,9 +82,9 @@ export const Planet: NextPage = () => {
           <Button className="mt-4" onClick={() => push('/')}>
             Go to home
           </Button>
-        </div>
+        </motion.div>
       )}
-    </main>
+    </Container>
   )
 }
 

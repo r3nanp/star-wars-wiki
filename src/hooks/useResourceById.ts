@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import { Resource } from '@/types/Resource'
-import { fetchProxyResourceById } from '@/api/fetcher'
+import { fetchProxyResourceById } from '@/api'
 
 export interface ResourceQueryHookConfig<T extends Resource> {
   initialData?: T

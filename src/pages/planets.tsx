@@ -1,18 +1,26 @@
-import { Button, Card, Heading, Spinner } from '@/components'
-import { usePlanetsInfiniteQuery } from '@/hooks'
+import { NextPage } from 'next'
+import { motion } from 'framer-motion'
 
-export default function Homeworld() {
+//* CUSTOM IMPORTS
+import { Button, Card, Container, Heading, Loading } from '@/components'
+import { usePlanetsInfiniteQuery } from '@/hooks'
+import { listVariants } from '@/styles/variants'
+
+const Homeworld: NextPage = () => {
   const { data, fetchMore, isLoading, canFetchMore, isFetchingMore } =
     usePlanetsInfiniteQuery()
 
   return isLoading ? (
-    <div className="container-center my-2">
-      <Spinner />
-    </div>
+    <Loading />
   ) : (
-    <section className="w-full py-2">
-      <div className="h-screen pt-8">
-        <Heading className="mb-4 border-b-2 border-primary text-primary">
+    <Container className="w-full py-2">
+      <motion.div
+        variants={listVariants}
+        initial="hidden"
+        animate="visible"
+        className="h-screen pt-8"
+      >
+        <Heading color="white" className="mb-4 border-b-2 border-primary">
           Planets
         </Heading>
 
@@ -37,7 +45,9 @@ export default function Homeworld() {
               : 'My job is done'}
           </Button>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </Container>
   )
 }
+
+export default Homeworld
