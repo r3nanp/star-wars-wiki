@@ -4,8 +4,14 @@ import { useRouter } from 'next/router'
 //* CUSTOM IMPORTS
 import { useResourceById } from '@/hooks'
 import { Planets } from '@/types/Planets'
-import { Button, CharacterName } from '@/components'
-import { Heading, ListContainer, ListItem, Spinner } from '@/components'
+import {
+  Button,
+  CharacterName,
+  Heading,
+  ListContainer,
+  ListItem,
+  Spinner,
+} from '@/components'
 import { formatPopulation } from '@/utils/formatPopulation'
 
 export const Planet: NextPage = () => {
@@ -62,7 +68,7 @@ export const Planet: NextPage = () => {
           </ListContainer>
 
           <Button className="mt-4" onClick={() => push('/')}>
-            Go back home
+            Go to home
           </Button>
         </div>
       )}

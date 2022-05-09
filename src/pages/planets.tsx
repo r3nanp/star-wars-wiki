@@ -1,5 +1,5 @@
 import { Button, Card, Heading, Spinner } from '@/components'
-import { usePlanetsInfiniteQuery } from '@/hooks/useSWRInfiniteQuery'
+import { usePlanetsInfiniteQuery } from '@/hooks'
 
 export default function Homeworld() {
   const { data, fetchMore, isLoading, canFetchMore, isFetchingMore } =

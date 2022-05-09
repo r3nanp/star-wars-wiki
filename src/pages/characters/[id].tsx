@@ -40,28 +40,28 @@ const Character: NextPage = () => {
 
         <ListContainer className="mb-2">
           <ListItem>
-            <Heading className="text-black">Hair color:</Heading>
+            <Heading className="text-gray-800">Hair color:</Heading>
             {character?.hair_color}
           </ListItem>
         </ListContainer>
 
         <ListContainer className="mb-2">
           <ListItem>
-            <Heading className="text-black">Gender:</Heading>
+            <Heading className="text-gray-800">Gender:</Heading>
             {character?.gender}
           </ListItem>
         </ListContainer>
 
         <ListContainer className="mb-2">
           <ListItem>
-            <Heading className="text-black">Birth year:</Heading>
+            <Heading className="text-gray-800">Birth year:</Heading>
             {character?.birth_year}
           </ListItem>
         </ListContainer>
 
         <ListContainer className="mb-2">
           <ListItem>
-            <Heading className="text-black">Homeworld:</Heading>
+            <Heading className="text-gray-800">Homeworld:</Heading>
             <Link href={`/planets/${planet?.id}`}>
               <a className="text-black">
                 <span className="underline">{planet?.name}</span>
@@ -71,7 +71,7 @@ const Character: NextPage = () => {
         </ListContainer>
 
         <Button className="mt-4" onClick={() => push('/')}>
-          Go back home
+          Go home
         </Button>
       </div>
     </main>
