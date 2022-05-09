@@ -4,14 +4,14 @@ import Link from 'next/link'
 
 //* CUSTOM IMPORTS
 import { Character } from '@/types/Character'
-import { useResource } from '@/hooks/useResource'
-import { Heading, Spinner } from '@/components'
-import { useResourceById } from '@/hooks/useResourceById'
+import { useResourceById, useResource } from '@/hooks'
+import { Button, Heading, ListContainer, ListItem, Spinner } from '@/components'
 
 const Character: NextPage = () => {
   const {
     query: { id },
     isFallback,
+    push,
   } = useRouter()
 
   // Get character data
@@ -30,21 +30,50 @@ const Character: NextPage = () => {
 
   if (!id) return null
 
-  if (isLoading) return <Spinner size="lg" className="m-auto" />
+  if (isLoading || isPlanetLoading)
+    return <Spinner size="lg" className="m-auto" />
 
   return (
     <main>
-      <Heading>Este é {character?.name}</Heading>
-      {isPlanetLoading ? (
-        <Spinner size="sm" className="m-auto" />
-      ) : (
-        <Link href={`/planets/${planet?.id}`}>
-          <a className="text-white">
-            Do planeta{' '}
-            <span className="underline text-primary">{planet?.name}</span>
-          </a>
-        </Link>
-      )}
+      <div className="flex flex-col justify-center items-center">
+        <Heading className="my-4">This is {character?.name}</Heading>
+
+        <ListContainer className="mb-2">
+          <ListItem>
+            <Heading className="text-black">Hair color:</Heading>
+            {character?.hair_color}
+          </ListItem>
+        </ListContainer>
+
+        <ListContainer className="mb-2">
+          <ListItem>
+            <Heading className="text-black">Gender:</Heading>
+            {character?.gender}
+          </ListItem>
+        </ListContainer>
+
+        <ListContainer className="mb-2">
+          <ListItem>
+            <Heading className="text-black">Birth year:</Heading>
+            {character?.birth_year}
+          </ListItem>
+        </ListContainer>
+
+        <ListContainer className="mb-2">
+          <ListItem>
+            <Heading className="text-black">Homeworld:</Heading>
+            <Link href={`/planets/${planet?.id}`}>
+              <a className="text-black">
+                <span className="underline">{planet?.name}</span>
+              </a>
+            </Link>
+          </ListItem>
+        </ListContainer>
+
+        <Button className="mt-4" onClick={() => push('/')}>
+          Go back home
+        </Button>
+      </div>
     </main>
   )
 }

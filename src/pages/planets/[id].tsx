@@ -33,7 +33,9 @@ export const Planet: NextPage = () => {
     <main>
       {isSuccess && (
         <div className="flex flex-col justify-center items-center">
-          <Heading className="my-4">Characteristics:</Heading>
+          <Heading className="my-4">
+            {planetResource?.name} Characteristics:
+          </Heading>
 
           <ListContainer>
             <ListItem>
@@ -60,7 +62,7 @@ export const Planet: NextPage = () => {
           </ListContainer>
 
           <Button className="mt-4" onClick={() => push('/')}>
-            Go back
+            Go back home
           </Button>
         </div>
       )}
