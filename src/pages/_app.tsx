@@ -4,7 +4,6 @@ import type { AppProps } from 'next/app'
 import { NextSeo } from 'next-seo'
 
 import SEOConfig from '../next-seo.config'
-import { Container } from '@/components'
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
