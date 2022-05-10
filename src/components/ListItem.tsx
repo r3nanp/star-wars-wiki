@@ -10,7 +10,7 @@ export const ListItem = ({ className = '', children }: ListItemProps) => {
   return (
     <li
       className={clsx(
-        'w-1/3 text-center bg-primary p-2 rounded-md',
+        'md:w-1/2 w-full text-center bg-primary p-2 rounded-md',
         className
       )}
     >
