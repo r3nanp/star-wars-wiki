@@ -1,7 +1,7 @@
 import clsx from 'clsx'
-import * as React from 'react'
 
-import { Spinner } from './Spinner'
+import { Spinner } from '../Spinner'
+import { ButtonProps } from './button.types'
 
 const variants = {
   primary: 'bg-primary text-black hover:text-gray-50:bg-yellow-700',
@@ -13,17 +13,6 @@ const sizes = {
   lg: 'py-3 px-8 text-lg',
 }
 
-type IconProps =
-  | { startIcon: React.ReactElement; endIcon?: never }
-  | { endIcon: React.ReactElement; startIcon?: never }
-  | { endIcon?: undefined; startIcon?: undefined }
-
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: keyof typeof variants
-  size?: keyof typeof sizes
-  isLoading?: boolean
-} & IconProps
-
 export const Button = ({
   type = 'button',
   className = '',
@@ -32,7 +21,7 @@ export const Button = ({
   isLoading = false,
   startIcon,
   endIcon,
-  ...props
+  ...rest
 }: ButtonProps) => {
   return (
     <button
@@ -43,11 +32,11 @@ export const Button = ({
         sizes[size],
         className
       )}
-      {...props}
+      {...rest}
     >
       {isLoading && <Spinner size="sm" className="text-current" />}
       {!isLoading && startIcon}
-      <span className="mx-2">{props.children}</span> {!isLoading && endIcon}
+      <span className="mx-2">{rest.children}</span> {!isLoading && endIcon}
     </button>
   )
 }

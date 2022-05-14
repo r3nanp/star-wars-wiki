@@ -1,11 +1,8 @@
 import Link from 'next/link'
 
 import { useResource } from '@/hooks'
-import { Spinner } from './Spinner'
-
-type CharacterNameProps = {
-  url: string
-}
+import { Spinner } from '../Spinner'
+import { CharacterNameProps } from './characterName.types'
 
 export const CharacterName = ({ url }: CharacterNameProps) => {
   const { isSuccess, isLoading, data } = useResource(url)

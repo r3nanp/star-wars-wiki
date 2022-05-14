@@ -1,40 +1,30 @@
 import useSWRInfinite from 'swr/infinite'
 
 import { fetchCharacterList, fetchPlanetsList } from '@/api'
-import { Character } from '@/types/Character'
-import { Planets } from '@/types/Planets'
+import { BaseQueryHookResult, Planets, Character } from '@/types'
 import { urlToIdAndType } from '@/utils'
-
-interface BaseQueryHookResult<T> {
-  data?: T[]
-  fetchMore: () => void
-  isLoading: boolean
-  isFetching: boolean
-  isSuccess: boolean
-  isError: boolean
-  canFetchMore?: boolean
-  isFetchingMore?: string | boolean
-}
 
 interface CharactersQueryHookResult extends BaseQueryHookResult<Character> {}
 
 interface PlanetsQueryHookResult extends BaseQueryHookResult<Planets> {}
 
 export const useCharactersInfiniteQuery = (): CharactersQueryHookResult => {
-  const { data, size, setSize, error, isValidating } = useSWRInfinite(
-    index => `https://swapi.dev/api/people/?page=${index + 1}`,
-    fetchCharacterList
-  )
+  const { data, size, setSize, error, isValidating } =
+    useSWRInfinite(
+      index => `https://swapi.dev/api/people/?page=${index + 1}`,
+      fetchCharacterList
+    )
 
   let result: Character[] = []
-  data?.forEach(page => {
-    const characters = page?.results.map((c: Character) => {
-      const [id, type] = urlToIdAndType(c.url)
+  data?.forEach((page) => {
+    const characters = page?.results.map((character: Character) => {
+      const [id, type] = urlToIdAndType(character.url)
 
-      c.id = id
-      c.type = type
-      return c
+      character.id = id
+      character.type = type
+      return character
     })
+
     if (characters?.length) {
       result = result.concat(characters)
     }

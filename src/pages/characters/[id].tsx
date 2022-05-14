@@ -1,19 +1,13 @@
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 //* CUSTOM IMPORTS
-import {
-  Button,
-  Container,
-  Heading,
-  ListContainer,
-  ListItem,
-  Loading,
-} from '@/components'
+import { Container } from '@/templates'
+import { Character } from '@/types'
 import { useResourceById, useResource } from '@/hooks'
-import { Character } from '@/types/Character'
-import { motion } from 'framer-motion'
+import { Button, Heading, ListContainer, ListItem, Loading } from '@/components'
 import { opacity } from '@/styles/variants'
 
 const Character: NextPage = () => {

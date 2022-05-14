@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { ReactNode } from 'react'
-import { Header } from './Header'
+import { Header } from '@/components'
 
 type ContainerProps = {
   children: ReactNode

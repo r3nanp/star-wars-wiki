@@ -1,11 +1,7 @@
-import { cloneElement, ReactElement } from 'react'
-import Link, { LinkProps } from 'next/link'
+import { cloneElement } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-export type ActiveLinkProps = LinkProps & {
-  children: ReactElement
-  shouldMatchExactHref?: boolean
-}
+import { ActiveLinkProps } from './activeLink.types'
 
 export const ActiveLink = ({
   children,

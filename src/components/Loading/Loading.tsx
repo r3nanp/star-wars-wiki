@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Spinner } from './Spinner'
+import { Spinner } from '../Spinner'
 
 export const Loading = () => {
   return (

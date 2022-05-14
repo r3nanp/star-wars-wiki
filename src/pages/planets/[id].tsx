@@ -1,13 +1,14 @@
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 //* CUSTOM IMPORTS
+import { Container } from '@/templates'
+import { Planets } from '@/types'
 import { useResourceById } from '@/hooks'
-import { Planets } from '@/types/Planets'
 import {
   Button,
   CharacterName,
-  Container,
   Heading,
   ListContainer,
   ListItem,
@@ -15,7 +16,6 @@ import {
   Spinner,
 } from '@/components'
 import { formatPopulation } from '@/utils/formatPopulation'
-import { motion } from 'framer-motion'
 import { opacity } from '@/styles/variants'
 
 export const Planet: NextPage = () => {

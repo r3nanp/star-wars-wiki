@@ -1,11 +1,8 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { itemVariants } from '@/styles/variants'
 
-type CardProps = {
-  name: string
-  path: string
-}
+import { itemVariants } from '@/styles/variants'
+import { CardProps } from './cardProps.types'
 
 export const Card = ({ name, path }: CardProps) => {
   return (

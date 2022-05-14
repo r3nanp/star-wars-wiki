@@ -1,7 +1,7 @@
-import { Button, Heading } from '@/components'
 import { NextPage } from 'next'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import { Button, Heading } from '@/components'
 
 export const FourOhFour: NextPage = () => {
   const router = useRouter()

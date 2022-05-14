@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import { motion } from 'framer-motion'
 
-import { Button, Card, Container, Heading, Loading } from '@/components'
+import { Container } from '@/templates'
+import { Button, Card, Heading, Loading } from '@/components'
 import { useCharactersInfiniteQuery } from '@/hooks'
 import { listVariants } from '@/styles/variants'
 
