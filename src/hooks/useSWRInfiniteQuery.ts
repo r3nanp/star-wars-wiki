@@ -9,14 +9,13 @@ interface CharactersQueryHookResult extends BaseQueryHookResult<Character> {}
 interface PlanetsQueryHookResult extends BaseQueryHookResult<Planets> {}
 
 export const useCharactersInfiniteQuery = (): CharactersQueryHookResult => {
-  const { data, size, setSize, error, isValidating } =
-    useSWRInfinite(
-      index => `https://swapi.dev/api/people/?page=${index + 1}`,
-      fetchCharacterList
-    )
+  const { data, size, setSize, error, isValidating } = useSWRInfinite(
+    index => `https://swapi.dev/api/people/?page=${index + 1}`,
+    fetchCharacterList
+  )
 
   let result: Character[] = []
-  data?.forEach((page) => {
+  data?.forEach(page => {
     const characters = page?.results.map((character: Character) => {
       const [id, type] = urlToIdAndType(character.url)
 
@@ -51,6 +50,7 @@ export const usePlanetsInfiniteQuery = (): PlanetsQueryHookResult => {
   )
 
   let result: Planets[] = []
+
   data?.forEach(page => {
     const planets = page?.results.map((planet: Planets) => {
       const [id, type] = urlToIdAndType(planet.url)

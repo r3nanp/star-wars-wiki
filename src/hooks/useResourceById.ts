@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { Resource } from '@/types/Resource'
+import { Resource } from '@/types'
 import { fetchProxyResourceById } from '@/api'
 
 export interface ResourceQueryHookConfig<T extends Resource> {
@@ -26,10 +26,12 @@ export const useResourceById = <T extends Resource>(
   }
 
   const { data, error } = useSWR(key, () => fetchProxyResourceById<T>(id, type))
+
   if (data) {
     data.id = id
     data.type = type
   }
+
   return {
     data,
     isLoading: !data && !error,
