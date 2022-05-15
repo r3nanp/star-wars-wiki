@@ -39,6 +39,10 @@ export const Planet: NextPage = () => {
 
   if (isLoading) return <Loading />
 
+  const handleGoToHome = () => {
+    push('/')
+  }
+
   return (
     <Container>
       {isSuccess && (
@@ -79,7 +83,7 @@ export const Planet: NextPage = () => {
             </ListItem>
           </ListContainer>
 
-          <Button className="mt-4" onClick={() => push('/')}>
+          <Button className="mt-4" onClick={handleGoToHome}>
             Go to home
           </Button>
         </motion.div>

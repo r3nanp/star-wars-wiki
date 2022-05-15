@@ -6,6 +6,10 @@ import { Button, Heading } from '@/components'
 export const FourOhFour: NextPage = () => {
   const router = useRouter()
 
+  const handleGoToHome = () => {
+    router.push('/')
+  }
+
   return (
     <main className="container-center h-screen flex-col">
       <Image
@@ -19,7 +23,7 @@ export const FourOhFour: NextPage = () => {
         Looks like you got lost, go back and start to navigate!
       </Heading>
 
-      <Button onClick={() => router.push('/')}>Go back home</Button>
+      <Button onClick={handleGoToHome}>Go back home</Button>
     </main>
   )
 }

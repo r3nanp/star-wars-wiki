@@ -35,6 +35,10 @@ const Character: NextPage = () => {
 
   if (isLoading || isPlanetLoading) return <Loading />
 
+  const handleGoToHome = () => {
+    push('/')
+  }
+
   return (
     <Container>
       <motion.div
@@ -80,7 +84,7 @@ const Character: NextPage = () => {
           </ListItem>
         </ListContainer>
 
-        <Button className="mt-4" onClick={() => push('/')}>
+        <Button className="mt-4" onClick={handleGoToHome}>
           Go home
         </Button>
       </motion.div>
