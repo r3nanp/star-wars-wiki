@@ -15,7 +15,7 @@ export const FourOhFour: NextPage = () => {
         height={200}
       />
 
-      <Heading className="text-white mb-8">
+      <Heading color="white" className="mb-8">
         Looks like you got lost, go back and start to navigate!
       </Heading>
 
