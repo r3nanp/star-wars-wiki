@@ -6,7 +6,11 @@ const colors = {
   white: 'text-white',
 }
 
-export const Heading = ({ className = '', children, color = 'gray-dark' }: HeadingProps) => {
+export const Heading = ({
+  className = '',
+  children,
+  color = 'gray-dark',
+}: HeadingProps) => {
   return (
     <h1 className={clsx('text-2xl font-bold', colors[color], className)}>
       {children}

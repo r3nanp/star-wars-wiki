@@ -11,7 +11,7 @@ const sizes = {
 const colors = {
   primary: 'text-primary',
   white: 'text-white',
-  gray: 'text-gray-500'
+  gray: 'text-gray-500',
 }
 
 export const Spinner = ({
@@ -22,12 +22,7 @@ export const Spinner = ({
   return (
     <>
       <svg
-        className={clsx(
-          'animate-spin',
-          sizes[size],
-          colors[color],
-          className
-        )}
+        className={clsx('animate-spin', sizes[size], colors[color], className)}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

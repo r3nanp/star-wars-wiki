@@ -26,8 +26,8 @@ export const ActiveLink = ({
   return (
     <Link {...rest}>
       {cloneElement(children, {
-        className: isActive ? 'text-primary' : 'text-white'
+        className: isActive ? 'text-primary' : 'text-white',
       })}
     </Link>
   )
-    }
+}
