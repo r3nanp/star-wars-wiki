@@ -21,17 +21,19 @@ const Homeworld: NextPage = () => {
         animate="visible"
         className="h-screen pt-8"
       >
-        <Heading color="white" className="mb-4 border-b-2 border-primary">
-          Planets
-        </Heading>
+        <section className="md:m-auto md:w-1/2">
+          <Heading color="white" className="mb-4 border-b-2 border-primary">
+            Planets
+          </Heading>
 
-        {data?.map(planets => (
-          <Card
-            path={`/planets/${planets.id}`}
-            key={planets.id}
-            name={planets.name}
-          />
-        ))}
+          {data?.map(planets => (
+            <Card
+              path={`/planets/${planets.id}`}
+              key={planets.id}
+              name={planets.name}
+            />
+          ))}
+        </section>
 
         <div className="flex justify-center pb-4 items-center">
           <Button

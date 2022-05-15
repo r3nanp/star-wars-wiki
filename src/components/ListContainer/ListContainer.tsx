@@ -1,10 +1,5 @@
-import { ReactNode } from 'react'
 import clsx from 'clsx'
-import { BaseComponent } from '@/types/BaseComponent'
-
-type ListContainerProps = BaseComponent & {
-  children: ReactNode
-}
+import { ListContainerProps } from './listContainer.types'
 
 export const ListContainer = ({
   children,

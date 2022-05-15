@@ -1,10 +1,5 @@
-import { ReactNode } from 'react'
 import clsx from 'clsx'
-import { BaseComponent } from '@/types/BaseComponent'
-
-type ListItemProps = BaseComponent & {
-  children: ReactNode
-}
+import { ListItemProps } from './listItem.types'
 
 export const ListItem = ({ className = '', children }: ListItemProps) => {
   return (

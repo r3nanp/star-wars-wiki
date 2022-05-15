@@ -1,15 +1,9 @@
-import { ReactNode } from 'react'
 import clsx from 'clsx'
+import { HeadingProps } from './heading.types'
 
 const colors = {
   'gray-dark': 'text-gray-800',
   white: 'text-white',
-}
-
-type HeadingProps = {
-  className?: string
-  children: ReactNode
-  color?: keyof typeof colors
 }
 
 export const Heading = ({ className = '', children, color = 'gray-dark' }: HeadingProps) => {

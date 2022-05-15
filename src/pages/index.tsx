@@ -20,17 +20,19 @@ export const Home: NextPage = () => {
         animate="visible"
         className="h-screen pt-8"
       >
-        <Heading color="white" className="mb-4 border-b-2 border-primary">
-          Characters
-        </Heading>
+        <section className="md:m-auto md:w-1/2">
+          <Heading color="white" className="mb-4 border-b-2 border-primary">
+            Characters
+          </Heading>
 
-        {data?.map(character => (
-          <Card
-            key={character.id}
-            name={character.name}
-            path={`/characters/${character.id}`}
-          />
-        ))}
+          {data?.map(character => (
+            <Card
+              key={character.id}
+              name={character.name}
+              path={`/characters/${character.id}`}
+            />
+          ))}
+        </section>
 
         <div className="flex justify-center pb-4 items-center">
           <Button

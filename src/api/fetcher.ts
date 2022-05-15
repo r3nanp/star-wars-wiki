@@ -1,7 +1,6 @@
 import { api } from '@/services/api'
-import { Character } from '@/types/Character'
-import { Planets } from '@/types/Planets'
 import { urlToIdAndType } from '@/utils'
+import { Planets, Character } from '@/types'
 import { ResourceFetcher, ResourceFetcherById } from './types'
 
 export const fetchResourceById: ResourceFetcherById = async <T>(
@@ -34,6 +33,7 @@ export const fetchPlanetsList = async (url = '/planets') => {
 
   return data
 }
+
 export const fetchCharacterList = async (url = '/people') => {
   const resp = await api.get(url)
 
